@@ -24,6 +24,14 @@ public class Player extends Actor
 
     int rotacion = 4;
 
+    public double getDX() { 
+        return dx; 
+    }
+
+    public double getDY() { 
+        return dy; 
+    }
+
     public void act()
     {
         // Add your action code here.
@@ -85,5 +93,12 @@ public class Player extends Actor
         }
 
         setLocation(x, y);
+    }
+
+    public void tocarAsteroide(){
+        if (getOneIntersectingObject(Asteroides.class) != null) {
+            Greenfoot.setWorld(new GameOver());
+            return; // evita que se ejecute más código este turno
+        }
     }
 }

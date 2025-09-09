@@ -46,6 +46,7 @@ public class Bala extends Actor
 
         setLocation(x, y);
     }
+    
 }
 
 

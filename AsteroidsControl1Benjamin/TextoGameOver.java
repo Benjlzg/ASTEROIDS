@@ -3,14 +3,12 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 
-public class Inicio extends Actor {
+public class TextoGameOver extends Actor {
 
-    public Inicio() {
+    public TextoGameOver() {
         setImage(crearImagenGameOver());
     }
-    public void act(){
-        IniciarJuego();
-    }
+
     private GreenfootImage crearImagenGameOver() {
         GreenfootImage img = new GreenfootImage(800, 200);
 
@@ -30,20 +28,13 @@ public class Inicio extends Actor {
 
             img.setFont(gf);
             img.setColor(greenfoot.Color.WHITE);
-            img.drawString("ASTEROIDS", 40, 140);
+            img.drawString("GAME OVER", 40, 140);
 
         } catch (Exception e) {
             // Si falla, usar fuente por defecto
-            img = new GreenfootImage("ASTEROIDS", 72, greenfoot.Color.WHITE, new greenfoot.Color(0,0,0,0));
+            img = new GreenfootImage("GAME OVER", 72, greenfoot.Color.WHITE, new greenfoot.Color(0,0,0,0));
         }
 
         return img;
-    }
-    public void IniciarJuego()
-    {
-        if (Greenfoot.isKeyDown("enter"))
-        {
-            Greenfoot.setWorld(new JuegoAsteroids());
-        }
     }
 }

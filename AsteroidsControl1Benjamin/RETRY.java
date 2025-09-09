@@ -3,9 +3,9 @@ import java.awt.Font;
 import java.awt.GraphicsEnvironment;
 import java.io.File;
 
-public class Inicio extends Actor {
+public class RETRY extends Actor {
 
-    public Inicio() {
+    public RETRY() {
         setImage(crearImagenGameOver());
     }
     public void act(){
@@ -26,15 +26,15 @@ public class Inicio extends Actor {
             System.out.println("Fuente cargada: " + family);
 
             // Crear un greenfoot.Font con ese nombre
-            greenfoot.Font gf = new greenfoot.Font(family, false, false, 72);
+            greenfoot.Font gf = new greenfoot.Font(family, false, false, 30);
 
             img.setFont(gf);
             img.setColor(greenfoot.Color.WHITE);
-            img.drawString("ASTEROIDS", 40, 140);
+            img.drawString("PRESS ENTER TO PLAY", 40, 140);
 
         } catch (Exception e) {
             // Si falla, usar fuente por defecto
-            img = new GreenfootImage("ASTEROIDS", 72, greenfoot.Color.WHITE, new greenfoot.Color(0,0,0,0));
+            img = new GreenfootImage("PRESS ENTER TO PLAY", 30, greenfoot.Color.WHITE, new greenfoot.Color(0,0,0,0));
         }
 
         return img;

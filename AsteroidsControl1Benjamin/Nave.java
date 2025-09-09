@@ -10,14 +10,14 @@ public class Nave extends Player
 {   
     private GreenfootImage imgNormal;
     private GreenfootImage imgAvanzando;
-    
+
     private static final int Ancho = 60;
     private static final int Alto = 60;
     private static final int Rot = 0;
-    
+
     private int disparoDelay = 0;
     private int disparoMaxDelay = 30;
-    
+
     /**
      * Act - do whatever the Nave wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -26,11 +26,12 @@ public class Nave extends Player
     {
         imgNormal = preparar("NaveJugador.png", Ancho, Alto, Rot);
         imgAvanzando = preparar("NaveJugadorAvanzando.png", Ancho, Alto, Rot);
-        
+
         setImage(imgNormal);
         setRotation(0);
-        
+
     }
+
     public void act()
     {
         movimientoJugador();
@@ -38,7 +39,9 @@ public class Nave extends Player
         rotacionJugador();
         actualizarImagen();
         disparoJugador();
+        tocarAsteroide();
     }
+
     private void actualizarImagen()
     {
         if (Greenfoot.isKeyDown("w")){
@@ -47,12 +50,16 @@ public class Nave extends Player
             setImage(imgNormal);
         }
     }
+
     private GreenfootImage preparar(String archivo, int w, int h, int rot){
         GreenfootImage img = new GreenfootImage(archivo);
         img.scale(w,h);
-        if (rot != 0) img.rotate(rot);
+        if (rot != 0){
+          img.rotate(rot);  
+        }
         return img;
     }
+
     private void disparoJugador(){
         if (disparoDelay > 0)
         {
@@ -60,7 +67,7 @@ public class Nave extends Player
         }
         if (Greenfoot.isKeyDown("space") && disparoDelay == 0)
         {
-            BalaJugador bala = new BalaJugador(getRotation());
+            BalaJugador bala = new BalaJugador(getRotation(), getDX(), getDY());
             getWorld().addObject(bala, getX(), getY());
             disparoDelay = disparoMaxDelay;
         }
